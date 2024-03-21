@@ -15,19 +15,29 @@ fake_user_agent = [
 
 header = {'user-agent': choice(fake_user_agent)}
 
-link = f"https://world-weather.ru/pogoda/russia/moscow/7days/"
+link = f"https://world-weather.ru/pogoda/russia/rostov_na_donu/7days/"
 req_date = requests.get(link, headers = header)
 
 soup = BeautifulSoup(req_date.content, 'lxml')
 
 info_city = soup.find('h2', class_ = "day-night-city").text[0:-11] # Название города и инфа маленькая
 
-temperature_night = str(soup.find_all('td', class_ = "weather-temperature")[0])[91:-12] 
-temperature_morning = str(soup.find_all('td', class_ = "weather-temperature")[1])[91:-12] 
-temperature_day = str(soup.find_all('td', class_ = "weather-temperature")[2])[112:-12] 
-temperature_evening = str(soup.find_all('td', class_ = "weather-temperature")[3])[91:-12] 
+temperature_night = soup.find_all('td', class_ = "weather-temperature")[0].get_text(strip=True)
+temperature_morning = soup.find_all('td', class_ = "weather-temperature")[1].get_text(strip=True)
+temperature_day = soup.find_all('td', class_ = "weather-temperature")[2].get_text(strip=True)
+temperature_evening = soup.find_all('td', class_ = "weather-temperature")[3].get_text(strip=True)
 
-print(temperature_night)
-print(temperature_morning)
-print(temperature_day)
-print(temperature_evening)
+filling_night = soup.find_all('td', class_ = "weather-feeling")[0].get_text(strip=True)
+filling_morning = soup.find_all('td', class_ = "weather-feeling")[1].get_text(strip=True)
+filling_day = soup.find_all('td', class_ = "weather-feeling")[2].get_text(strip=True)
+filling_evening = soup.find_all('td', class_ = "weather-feeling")[3].get_text(strip=True)
+
+brezee_night = soup.find_all('td', class_ = "weather-wind")[0].get_text(strip=True)
+brezee_morning = soup.find_all('td', class_ = "weather-wind")[1].get_text(strip=True)
+brezee_day = soup.find_all('td', class_ = "weather-wind")[2].get_text(strip=True)
+brezee_evening = soup.find_all('td', class_ = "weather-wind")[3].get_text(strip=True)
+
+print(brezee_night)
+print(brezee_morning)
+print(brezee_day)
+print(brezee_evening)
