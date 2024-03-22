@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import click_handler
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -17,6 +17,15 @@ class Ui_MainWindow(object):
 
         self.pushButton.setFont(font)
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(
+            lambda: click_handler.click_button(
+                self.lineEdit, self.info_city, 
+                self.fill_1, self.fill_2, self.fill_3, self.fill_4, 
+                self.temp_1, self.temp_2, self.temp_3, self.temp_4,
+                self.wet_1, self.wet_2, self.wet_3, self.wet_4,
+                self.brezee_1, self.brezee_2, self.brezee_3, self.brezee_4
+                )
+            )
 
         self.label_city = QtWidgets.QLabel(self.centralwidget)
         self.label_city.setGeometry(QtCore.QRect(480, 500, 71, 41))
@@ -398,27 +407,27 @@ class Ui_MainWindow(object):
         self.morning.setText(_translate("MainWindow", "Утро"))
         self.day.setText(_translate("MainWindow", "День"))
         self.eving.setText(_translate("MainWindow", "Вечер"))
-        self.temp_1.setText(_translate("MainWindow", "темпа ночь"))
-        self.temp_2.setText(_translate("MainWindow", "темпа утро"))
-        self.temp_3.setText(_translate("MainWindow", "темпа день"))
-        self.temp_4.setText(_translate("MainWindow", "темпа вечер"))
-        self.fill_1.setText(_translate("MainWindow", "ощ ночь"))
-        self.fill_2.setText(_translate("MainWindow", "ощ утро"))
-        self.fill_3.setText(_translate("MainWindow", "ощ день"))
-        self.fill_4.setText(_translate("MainWindow", "ощ вечер"))
-        self.brezee_1.setText(_translate("MainWindow", "вет ночь"))
-        self.wet_1.setText(_translate("MainWindow", "влаж ночь"))
-        self.wet_2.setText(_translate("MainWindow", "влаж утро"))
-        self.wet_3.setText(_translate("MainWindow", "влаж день"))
-        self.wet_4.setText(_translate("MainWindow", "влаж вечер"))
+        self.temp_1.setText(_translate("MainWindow", ""))
+        self.temp_2.setText(_translate("MainWindow", ""))
+        self.temp_3.setText(_translate("MainWindow", ""))
+        self.temp_4.setText(_translate("MainWindow", ""))
+        self.fill_1.setText(_translate("MainWindow", ""))
+        self.fill_2.setText(_translate("MainWindow", ""))
+        self.fill_3.setText(_translate("MainWindow", ""))
+        self.fill_4.setText(_translate("MainWindow", ""))
+        self.brezee_1.setText(_translate("MainWindow", ""))
+        self.wet_1.setText(_translate("MainWindow", ""))
+        self.wet_2.setText(_translate("MainWindow", ""))
+        self.wet_3.setText(_translate("MainWindow", ""))
+        self.wet_4.setText(_translate("MainWindow", ""))
         self.it_fill_like.setText(_translate("MainWindow", "Ощущаеться"))
         self.temperature.setText(_translate("MainWindow", "Температура"))
         self.brezee.setText(_translate("MainWindow", "Ветер"))
         self.wet.setText(_translate("MainWindow", "Влажность"))
-        self.brezee_2.setText(_translate("MainWindow", "вет утро"))
-        self.brezee_3.setText(_translate("MainWindow", "вет день"))
-        self.brezee_4.setText(_translate("MainWindow", "вет вечер"))
-        self.info_city.setText(_translate("MainWindow", "Тут цепляем инфу по городу"))
+        self.brezee_2.setText(_translate("MainWindow", ""))
+        self.brezee_3.setText(_translate("MainWindow", ""))
+        self.brezee_4.setText(_translate("MainWindow", ""))
+        self.info_city.setText(_translate("MainWindow", ""))
 
 
 
